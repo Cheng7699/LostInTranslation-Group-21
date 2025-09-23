@@ -14,16 +14,16 @@ public class GUI {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JPanel countryPanel = new JPanel();
-            JTextField countryField = new JTextField(10);
-            countryField.setText("can");
-            countryField.setEditable(false); // we only support the "can" country code for now
-            countryPanel.add(new JLabel("Country:"));
-            countryPanel.add(countryField);
-
             JPanel languagePanel = new JPanel();
             JTextField languageField = new JTextField(10);
             languagePanel.add(new JLabel("Language:"));
             languagePanel.add(languageField);
+
+            JTextField countryField = new JTextField(10);
+                countryField.setText("can");
+            countryField.setEditable(false); // we only support the "can" country code for now
+            countryPanel.add(new JLabel("Country:"));
+            countryPanel.add(countryField);
 
             JPanel buttonPanel = new JPanel();
             JButton submit = new JButton("Submit");
