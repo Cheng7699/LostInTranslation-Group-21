@@ -19,11 +19,15 @@ public class GUI {
             languagePanel.add(new JLabel("Language:"));
             languagePanel.add(languageField);
 
-            JTextField countryField = new JTextField(10);
-                countryField.setText("can");
-            countryField.setEditable(false); // we only support the "can" country code for now
             countryPanel.add(new JLabel("Country:"));
-            countryPanel.add(countryField);
+            JComboBox<String> countryComboBox = new JComboBox<>();
+            CountryCodeConverter countryCodeConverter = new CountryCodeConverter();
+            for (String countryCode : new JSONTranslator().getCountryCodes()) {
+                countryComboBox.addItem(countryCodeConverter.fromCountryCode(countryCode));
+            }
+            countryComboBox.setEditable(false);
+            countryComboBox.setPreferredSize(new java.awt.Dimension(200,30));
+            countryPanel.add(countryComboBox);
 
             JPanel buttonPanel = new JPanel();
             JButton submit = new JButton("Submit");
@@ -40,7 +44,7 @@ public class GUI {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     String language = languageField.getText();
-                    String country = countryField.getText();
+                    String country = countryComboBox.getSelectedItem().toString();
 
                     // for now, just using our simple translator, but
                     // we'll need to use the real JSON version later.
