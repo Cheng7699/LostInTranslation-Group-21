@@ -39,6 +39,8 @@ public class GUI {
 
             languagePanel.add(new JLabel("Language:"));
             languagePanel.add(languageList);
+            JScrollPane scrollPane = new JScrollPane(languageList);
+            languagePanel.add(scrollPane, 1);
 
 
             JPanel buttonPanel = new JPanel();
