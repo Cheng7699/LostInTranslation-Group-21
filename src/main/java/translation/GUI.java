@@ -62,6 +62,10 @@ public class GUI {
                     String countryCode = countryCodeConverter.fromCountry(country);
                     String languageCode = languageCodeConverter.fromLanguage(language);
                     String result = jsonTranslator.translate(countryCode, languageCode);
+
+                    //Debugging:
+                    System.out.println(countryCode + " " + languageCode + " " + result);
+
                     if (result == null) {
                         result = "no translation found!";
                     }
