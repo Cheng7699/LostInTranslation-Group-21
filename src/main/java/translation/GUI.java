@@ -51,6 +51,7 @@ public class GUI {
             buttonPanel.add(resultLabel);
 
 
+
             // adding listener for when the user clicks the submit button
             submit.addActionListener(new ActionListener() {
                 @Override
@@ -58,13 +59,13 @@ public class GUI {
                     String language = languageList.getSelectedValue().toString();
                     String country = countryComboBox.getSelectedItem().toString();
 
-                    // for now, just using our simple translator, but
-                    // we'll need to use the real JSON version later.
-                    Translator translator = new CanadaTranslator();
-
                     String countryCode = countryCodeConverter.fromCountry(country);
                     String languageCode = languageCodeConverter.fromLanguage(language);
-                    String result = translator.translate(countryCode, languageCode);
+                    String result = jsonTranslator.translate(countryCode, languageCode);
+
+                    //Debugging:
+                    System.out.println(countryCode + " " + languageCode + " " + result);
+
                     if (result == null) {
                         result = "no translation found!";
                     }
